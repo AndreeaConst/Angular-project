@@ -42,6 +42,24 @@
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width">
+                    <input id="passwordRegisterConfirm" type="text" formControlName="passwordRegisterConfirm" matInput placeholder="Password Confirmation"
+                        required>
+                
+                    <mat-error *ngIf="passwordRegisterConfirm">
+                        <div *ngIf="getErrorMessageRequiredPasswordRegisterConfirm()!=true">
+                            {{getErrorMessageRequiredPasswordRegisterConfirm()}}
+                        </div>
+                    </mat-error>
+                
+                    <mat-error *ngIf="passwordRegisterConfirm">
+                        <div *ngIf="getErrorPasswordsEqual()!=true">
+                            Passwords do not match
+                        </div>
+                    </mat-error>
+                
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
                     <input id="firstName" type="text" formControlName="firstName" matInput placeholder="First Name"
                         required>
 

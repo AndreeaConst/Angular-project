@@ -40,6 +40,16 @@ export class RegisterPageComponent implements OnInit {
             ])
           ],
           updateOn: 'blur'
+        }],
+
+      passwordRegisterConfirm: ['',
+        {
+          validators: [
+            Validators.compose([
+              Validators.required
+            ])
+          ],
+          updateOn: 'blur'
         }]
 
     })
@@ -59,6 +69,10 @@ export class RegisterPageComponent implements OnInit {
 
   get passwordRegister() {
     return this.myForm.get("passwordRegister");
+  }
+
+  get passwordRegisterConfirm() {
+    return this.myForm.get("passwordRegisterConfirm");
   }
 
   getErrorMessageRequiredFirstName() {
@@ -93,5 +107,25 @@ export class RegisterPageComponent implements OnInit {
     return this.passwordRegister?.hasError('minlength') ? 'Your password must be at least 6 characters long' : true;
   }
 
+  getErrorMessageRequiredPasswordRegisterConfirm() {
+    return this.passwordRegisterConfirm?.hasError('required') ? 'You must enter a value' : true;
+  }
+
+  getErrorPasswordsEqual(){
+    //return this.passwordRegisterConfirm?.errors?.areEqual(this.passwordRegister?.value) ? 'Your passwords are not the same' : true;
+    const matched: boolean = this.passwordRegister?.value === this.passwordRegisterConfirm?.value;
+
+    console.log('equaltest', matched);
+
+    if (matched) {
+      this.myForm.controls.passwordRegisterConfirm.setErrors(null);
+    } else {
+      this.myForm.controls.passwordRegisterConfirm.setErrors({
+        notMatched: true
+      });
+    }
+
+    return matched;
+  }
 
 }

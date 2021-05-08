@@ -24,4 +24,12 @@ export class CustomValidators {
             return control.value.length >= max ? { maxValue: true} : null;
         } 
     }
+
+    /*static areEqual(string: any): ValidatorFn {
+        return (control: AbstractControl): ValidationErrors | null => {
+            console.log('string '+string);
+            console.log('control '+control.value)
+            return control.value != string ? { areEqual: true } : null;
+        }
+    }*/
 }
