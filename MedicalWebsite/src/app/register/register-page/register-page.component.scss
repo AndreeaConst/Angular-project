@@ -1,9 +1,9 @@
-.login-card{
+.register-card{
   position:absolute;
-  max-width: 500px;
-  height:250px;
-  bottom: 25%;
-  left: 15%;
+  max-width: 610px;
+  height:320px;
+  top: 30%;
+  left: 27%;
     
   background: white;
 }
@@ -12,14 +12,10 @@
   width: 100%;
 }
 
-.checkbox{
-  background-color: green;
-}
-
-.login-button{
+.register-button{
   bottom: 80%;
-  top:60px;
-  left: 10%;
+  top:20px;
+  left: 43%;
   width:90px;  
   height:40px;
 }
