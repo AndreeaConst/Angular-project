@@ -41,7 +41,10 @@
 
                 <mat-checkbox class="checkbox">Remember me</mat-checkbox>
 
-                <button class="login-button" mat-raised-button color="accent">Login</button>
+                <mat-card-actions>
+                    <button [routerLink]="['login-successful']" [disabled]="myForm.invalid" class="login-button" mat-raised-button color="accent">Login</button>
+                </mat-card-actions>
+                
             </form>
 
         </mat-card-content>

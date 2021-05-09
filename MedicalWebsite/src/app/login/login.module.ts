@@ -8,9 +8,10 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
+import { LoginPageSuccessfulComponent } from './login-page-successful/login-page-successful.component';
 
 @NgModule({
-  declarations: [LoginPageComponent],
+  declarations: [LoginPageComponent, LoginPageSuccessfulComponent],
   imports: [
     CommonModule,
     LoginRoutingModule,

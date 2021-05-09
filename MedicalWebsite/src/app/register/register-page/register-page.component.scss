@@ -12,6 +12,10 @@
   width: 100%;
 }
 
+.register-button:disabled {
+   background-color: green;
+}
+
 .register-button{
   bottom: 80%;
   top:20px;

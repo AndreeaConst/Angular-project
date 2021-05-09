@@ -94,7 +94,10 @@
 
                 </mat-form-field>
 
-                <button class="register-button" mat-raised-button color="accent">Register</button>
+                <mat-card-actions>
+                    <button [routerLink]="['register-successful']" [disabled]="myForm.invalid" class="register-button" mat-raised-button color="accent">Register</button>
+                </mat-card-actions>
+                
             </form>
 
         </mat-card-content>

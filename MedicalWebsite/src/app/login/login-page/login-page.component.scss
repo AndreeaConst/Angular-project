@@ -16,12 +16,17 @@
   background-color: green;
 }
 
+.login-button:disabled {
+   background-color: green;
+}
+
 .login-button{
   bottom: 80%;
-  top:60px;
-  left: 20%;
+  top:40px;
+  left: 40%;
   width:90px;  
   height:40px;
+  
 }
 
 ::ng-deep .mat-card{
