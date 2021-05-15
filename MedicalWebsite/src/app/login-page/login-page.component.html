@@ -15,9 +15,11 @@
                     <input id="emailLogin" type="text" formControlName="emailLogin" matInput placeholder="Email" required >
                     <mat-error *ngIf="emailLogin">{{getErrorMessageRequiredEmailLogin()}}</mat-error>
                 </mat-form-field>
+           
 
                 <mat-form-field class="example-full-width">
-                    <input id="passwordLogin" type="text" formControlName="passwordLogin" matInput placeholder="Password" required>
+                    <input matInput id="passwordLogin" [type]="hide ? 'password' : 'text'" formControlName="passwordLogin" placeholder="Password" required>
+                    <mat-icon [ngStyle]="{'color':'black'}" matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
 
                     <mat-error *ngIf="passwordLogin">
                         <div *ngIf="getErrorMessageRequiredPasswordLogin()!=true">
@@ -42,7 +44,7 @@
                 <mat-checkbox class="checkbox">Remember me</mat-checkbox>
 
                 <mat-card-actions>
-                    <button [routerLink]="['login-successful']" [disabled]="myForm.invalid" class="login-button" mat-raised-button color="accent">Login</button>
+                    <button [disabled]="myForm.invalid" (click)="onLogin(emailLogin?.value, passwordLogin?.value)" class="login-button" mat-raised-button color="accent">Login</button>
                 </mat-card-actions>
                 
             </form>

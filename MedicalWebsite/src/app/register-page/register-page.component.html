@@ -18,8 +18,10 @@
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width">
-                    <input id="passwordRegister" type="text" formControlName="passwordRegister" matInput
+                    <input id="passwordRegister" [type]="hide1 ? 'password' : 'text'" formControlName="passwordRegister" matInput
                         placeholder="Password" required>
+                    <mat-icon [ngStyle]="{'color':'black'}" matSuffix (click)="hide1 = !hide1">{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+
 
                     <mat-error *ngIf="passwordRegister">
                         <div *ngIf="getErrorMessageRequiredPasswordRegister()!=true">
@@ -42,8 +44,10 @@
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width">
-                    <input id="passwordRegisterConfirm" type="text" formControlName="passwordRegisterConfirm" matInput placeholder="Password Confirmation"
+                    <input id="passwordRegisterConfirm" [type]="hide2 ? 'password' : 'text'" formControlName="passwordRegisterConfirm" matInput placeholder="Password Confirmation"
                         required>
+                    <mat-icon [ngStyle]="{'color':'black'}" matSuffix (click)="hide2 = !hide2">{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+
                 
                     <mat-error *ngIf="passwordRegisterConfirm">
                         <div *ngIf="getErrorMessageRequiredPasswordRegisterConfirm()!=true">
@@ -95,7 +99,7 @@
                 </mat-form-field>
 
                 <mat-card-actions>
-                    <button [routerLink]="['register-successful']" [disabled]="myForm.invalid" class="register-button" mat-raised-button color="accent">Register</button>
+                    <button (click)="onRegister(emailRegister?.value, passwordRegister?.value, firstName?.value, lastName?.value)" [disabled]="myForm.invalid" class="register-button" mat-raised-button color="accent">Register</button>
                 </mat-card-actions>
                 
             </form>

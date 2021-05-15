@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CustomValidators } from '../../utils/custom-validators';
+import { FirebaseService } from 'src/app/services/firebase.service';
+import { LogoutService } from 'src/app/services/logout.service';
+import { CustomValidators } from '../utils/custom-validators';
 
 @Component({
   selector: 'app-login-page',
@@ -8,12 +10,17 @@ import { CustomValidators } from '../../utils/custom-validators';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent implements OnInit {
-
+  hide = true;
   myForm: FormGroup = new FormGroup({});
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder, 
+    public firebaseService: FirebaseService, 
+    public logoutService: LogoutService
+  ) { }
 
   ngOnInit(): void {
+
     this.myForm = this.fb.group({
       emailLogin: ['', Validators.compose(
         [Validators.required]
@@ -32,6 +39,13 @@ export class LoginPageComponent implements OnInit {
         }],
       
     })
+  }
+
+  async onLogin(email: string, password: string){
+    await this.firebaseService.login(email, password)
+    if(this.firebaseService.isLoggedin)
+      this.logoutService.login();
+
   }
 
   get emailLogin() {

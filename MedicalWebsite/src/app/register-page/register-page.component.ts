@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from 'src/app/utils/custom-validators';
+import { FirebaseService } from '../services/firebase.service';
+import { LogoutService } from '../services/logout.service';
 
 @Component({
   selector: 'app-register-page',
@@ -9,9 +11,14 @@ import { CustomValidators } from 'src/app/utils/custom-validators';
 })
 export class RegisterPageComponent implements OnInit {
 
+  hide1 = true;
+  hide2 = true;
   myForm: FormGroup = new FormGroup({});
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    public firebaseService: FirebaseService,
+    public logoutService: LogoutService) { }
 
   ngOnInit(): void {
     this.myForm = this.fb.group({
@@ -22,12 +29,12 @@ export class RegisterPageComponent implements OnInit {
 
       firstName: ['', Validators.compose(
         [Validators.required,
-        CustomValidators.hasMaximumValue(20)]
+        CustomValidators.hasMaximumValue(10)]
       )],
 
       lastName: ['', Validators.compose(
         [Validators.required,
-        CustomValidators.hasMaximumValue(10)]
+        CustomValidators.hasMaximumValue(20)]
       )],
 
       passwordRegister: ['',
@@ -55,6 +62,12 @@ export class RegisterPageComponent implements OnInit {
     })
   }
 
+  async onRegister(email: string, password: string, firstName: string, lastName: string) {
+    await this.firebaseService.register(email, password, firstName, lastName)
+    if (this.firebaseService.isLoggedin)
+      this.logoutService.login();
+  }
+
   get firstName() {
     return this.myForm.get("firstName");
   }
@@ -80,7 +93,7 @@ export class RegisterPageComponent implements OnInit {
   }
 
   getErrorMessageLengthFirstName() {
-    return this.firstName?.errors?.hasMaximumValue == null ? 'Your name must be maximum 20 characters long' : true;
+    return this.firstName?.errors?.hasMaximumValue == null ? 'Your name must be maximum 10 characters long' : true;
   }
 
   getErrorMessageRequiredLastName() {
@@ -88,7 +101,7 @@ export class RegisterPageComponent implements OnInit {
   }
 
   getErrorMessageLengthLastName() {
-    return this.lastName?.errors?.hasMaximumValue == null ? 'Your name must be maximum 10 characters long' : true;
+    return this.lastName?.errors?.hasMaximumValue == null ? 'Your name must be maximum 20 characters long' : true;
   }
 
   getErrorMessageRequiredEmailRegister() {
@@ -114,8 +127,6 @@ export class RegisterPageComponent implements OnInit {
   getErrorPasswordsEqual(){
     //return this.passwordRegisterConfirm?.errors?.areEqual(this.passwordRegister?.value) ? 'Your passwords are not the same' : true;
     const matched: boolean = this.passwordRegister?.value === this.passwordRegisterConfirm?.value;
-
-    console.log('equaltest', matched);
 
     if (matched) {
       this.myForm.controls.passwordRegisterConfirm.setErrors(null);
