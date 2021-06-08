@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Subject } from 'rxjs';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { LogoutService } from 'src/app/services/logout.service';
 import { CustomValidators } from '../utils/custom-validators';
@@ -10,42 +11,63 @@ import { CustomValidators } from '../utils/custom-validators';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent implements OnInit {
+  checked = false;
+  email = '';
+  password = '';
+
   hide = true;
   myForm: FormGroup = new FormGroup({});
 
   constructor(
-    private fb: FormBuilder, 
-    public firebaseService: FirebaseService, 
+    private fb: FormBuilder,
+    public firebaseService: FirebaseService,
     public logoutService: LogoutService
-  ) { }
+  ) {
+
+    if (this.logoutService.cookieService.check("cookieEmail"))
+      this.checked = true;
+    this.email = logoutService.cookieService.get('cookieEmail');
+    this.password = logoutService.cookieService.get('cookiePassword');
+  }
 
   ngOnInit(): void {
 
     this.myForm = this.fb.group({
-      emailLogin: ['', Validators.compose(
+      emailLogin: [this.email, Validators.compose(
         [Validators.required]
       )],
 
-      passwordLogin: ['',
-        {
-          validators: [
-            Validators.compose([
-              Validators.required,
-              Validators.minLength(6),
-              CustomValidators.passwordStrength()
-            ])
-          ],
-          updateOn: 'blur'
-        }],
-      
+      passwordLogin: [this.password,
+      {
+        validators: [
+          Validators.compose([
+            Validators.required,
+            Validators.minLength(6),
+            CustomValidators.passwordStrength()
+          ])
+        ],
+        updateOn: 'blur'
+      }],
+
     })
   }
 
-  async onLogin(email: string, password: string){
-    await this.firebaseService.login(email, password)
-    if(this.firebaseService.isLoggedin)
-      this.logoutService.login();
+  onClickRememberMe() {
+    console.log(this.checked);
+    if (this.checked == false) //first time user clicked the button (checked)
+    {
+      this.logoutService.rememberMe(this.emailLogin?.value, this.passwordLogin?.value);
+    }
+    else {
+      this.logoutService.cookieService.deleteAll();
+    }
 
+  }
+
+  async onLogin(email: string, password: string) {
+    await this.firebaseService.login(email, password)
+    if (this.firebaseService.isLoggedin)
+      this.logoutService.login();
   }
 
   get emailLogin() {
@@ -72,7 +94,7 @@ export class LoginPageComponent implements OnInit {
     return this.passwordLogin?.errors?.passwordStrength ? 'Your password must contain at least one capital letter, one small letter, one digit and one special character' : true;
   }
 
-  getErrorMessageLengthPasswordLogin(){
+  getErrorMessageLengthPasswordLogin() {
     return this.passwordLogin?.hasError('minlength') ? 'Your password must be at least 6 characters long' : true;
   }
 

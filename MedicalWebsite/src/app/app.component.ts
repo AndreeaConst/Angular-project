@@ -13,10 +13,10 @@ export class AppComponent{
   userName = "User";
 
   constructor(public logoutService: LogoutService) { 
-    logoutService.isLogout$.subscribe(value=>{
+    logoutService.isLogout$.subscribe((value: boolean)=>{
       this.isLoggedout = value;
     });
-    logoutService.userName$.subscribe(value=>{
+    logoutService.userName$.subscribe((value: string)=>{
       this.userName = value;
     })
   }

@@ -12,18 +12,21 @@
             <form [formGroup]="myForm" class="example-form">
 
                 <mat-form-field class="example-full-width">
-                    <input id="emailLogin" type="text" formControlName="emailLogin" matInput placeholder="Email" required >
+                    <input id="emailLogin" type="text" formControlName="emailLogin" matInput placeholder="Email"
+                        required>
                     <mat-error *ngIf="emailLogin">{{getErrorMessageRequiredEmailLogin()}}</mat-error>
                 </mat-form-field>
-           
+
 
                 <mat-form-field class="example-full-width">
-                    <input matInput id="passwordLogin" [type]="hide ? 'password' : 'text'" formControlName="passwordLogin" placeholder="Password" required>
-                    <mat-icon [ngStyle]="{'color':'black'}" matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    <input matInput id="passwordLogin" [type]="hide ? 'password' : 'text'"
+                        formControlName="passwordLogin" placeholder="Password" required>
+                    <mat-icon [ngStyle]="{'color':'black'}" matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' :
+                        'visibility'}}</mat-icon>
 
                     <mat-error *ngIf="passwordLogin">
                         <div *ngIf="getErrorMessageRequiredPasswordLogin()!=true">
-                             {{getErrorMessageRequiredPasswordLogin()}}
+                            {{getErrorMessageRequiredPasswordLogin()}}
                         </div>
                     </mat-error>
 
@@ -41,12 +44,14 @@
 
                 </mat-form-field>
 
-                <mat-checkbox class="checkbox">Remember me</mat-checkbox>
+                <mat-checkbox class="checkbox" [checked]="checked" (click)="onClickRememberMe()">Remember me
+                </mat-checkbox>
 
                 <mat-card-actions>
-                    <button [disabled]="myForm.invalid" (click)="onLogin(emailLogin?.value, passwordLogin?.value)" class="login-button" mat-raised-button color="accent">Login</button>
+                    <button [disabled]="myForm.invalid" (click)="onLogin(emailLogin?.value, passwordLogin?.value)"
+                        class="login-button" mat-raised-button color="accent">Login</button>
                 </mat-card-actions>
-                
+
             </form>
 
         </mat-card-content>
