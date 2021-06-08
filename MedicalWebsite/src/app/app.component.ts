@@ -9,6 +9,7 @@ import { LogoutService } from './services/logout.service';
 })
 export class AppComponent{
   title = 'MedicalWebsite';
+  myimage: string="assets/images/medicall.jpg";
   isLoggedout = true;
   userName = "User";
 
@@ -20,5 +21,4 @@ export class AppComponent{
       this.userName = value;
     })
   }
-
 }

@@ -21,13 +21,19 @@ import { RegisterPageComponent } from './register-page/register-page.component';
 import { RegisterPageSuccessfulComponent } from './register-page-successful/register-page-successful.component';
 import { CookieService } from 'ngx-cookie-service';
 
+import { MyFavoritesComponent } from './my-favorites/my-favorites.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
     LoginPageSuccessfulComponent,
     RegisterPageComponent,
-    RegisterPageSuccessfulComponent
+    RegisterPageSuccessfulComponent,
+    MyFavoritesComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +56,9 @@ import { CookieService } from 'ngx-cookie-service';
       messagingSenderId: "620008568083",
       appId: "1:620008568083:web:b3257361614927a4e196e6"
     }),
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [FirebaseService, CookieService],
   bootstrap: [AppComponent]
