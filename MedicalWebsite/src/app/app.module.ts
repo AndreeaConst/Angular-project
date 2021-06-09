@@ -35,7 +35,7 @@ import { EditElementComponent } from './modals/edit-element/edit-element.compone
     AppComponent,
     MyFavoritesComponent,
     AddElementComponent,
-    EditElementComponent
+    EditElementComponent,
     LoginPageComponent,
     LoginPageSuccessfulComponent,
     RegisterPageComponent,
