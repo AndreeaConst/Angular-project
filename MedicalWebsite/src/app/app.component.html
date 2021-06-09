@@ -1,4 +1,9 @@
 <mat-toolbar color=accent class="mat-elevation-z8">
+  <div class="spacer"></div>
+    Welcome, {{userName}}
+</mat-toolbar>
+
+<mat-toolbar color=accent class="mat-elevation-z8">
   <span>
     <h4 style="font-family: fantasy; font-size:170% ;">Apples'n people</h4>
   </span>
@@ -12,8 +17,16 @@
   <a routerLink="/appointment" mat-button>Schedule an appointment</a>
   <a routerLink="/MyFavorites" mat-button>My Favorites</a>
   <a mat-button>Contact</a>
-  <a mat-raised-button color="warn">Login</a>
-  <a mat-raised-button color="warn">Register</a>
+
+  <div *ngIf="isLoggedout">
+    <a routerLink="/login" mat-raised-button color="warn">Login</a>
+    <a routerLink="/register" mat-raised-button color="warn">Register</a>
+  </div>
+
+  <div *ngIf="!isLoggedout">
+    <button (click)="logoutService.logout()" mat-raised-button color="warn">Logout</button>
+  </div>
+  
 
 </mat-toolbar>
 
