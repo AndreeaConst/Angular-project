@@ -59,13 +59,9 @@ import { EditElementComponent } from './modals/edit-element/edit-element.compone
     
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule,
     MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     MatCardModule,
@@ -75,7 +71,6 @@ import { EditElementComponent } from './modals/edit-element/edit-element.compone
     MatIconModule,
     MatInputModule,
     MatSnackBarModule,
-    MatTableModule,
     MatSortModule,
     MatDialogModule
   ],
