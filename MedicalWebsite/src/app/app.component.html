@@ -14,7 +14,10 @@
 
   <a routerLink="" mat-button>Home</a>
   <a routerLink="/appointment" mat-button>Schedule an appointment</a>
-  <a routerLink="/MyFavorites" mat-button>My Favorites</a>
+
+  <div *ngIf="!isLoggedout">
+    <a routerLink="/MyFavorites" mat-button>My Favorites</a>
+  </div>
 
   <div *ngIf="isLoggedout">
     <a routerLink="/login" mat-raised-button color="warn">Login</a>
