@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppointmentService } from 'src/app/appointment-service.service';
+import { AppointmentService } from 'src/app/services/appointment-service.service';
 
 @Component({
   selector: 'app-finish-appointment-page',
