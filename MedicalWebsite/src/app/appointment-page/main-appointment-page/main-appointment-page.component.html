@@ -46,7 +46,7 @@
                             {{department.value}}
                         </mat-option>
                     </mat-select>
-                    <mat-error *ngIf="locationControl?.hasError('required')">Please choose a location</mat-error>
+                    <mat-error *ngIf="departmentControl?.hasError('required')">Please choose a department</mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="fill">
@@ -54,7 +54,7 @@
                     <input matInput [matDatepicker]="picker" formControlName="matDatepicker" required>
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
-                    <mat-error *ngIf="matDatepicker?.hasError('required')">Please choose a location</mat-error>
+                    <mat-error *ngIf="matDatepicker?.hasError('required')">Please choose a date</mat-error>
                 </mat-form-field>
                 
 
