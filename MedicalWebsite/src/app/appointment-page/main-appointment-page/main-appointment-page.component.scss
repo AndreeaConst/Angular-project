@@ -1,10 +1,20 @@
 .appointment-card{
   position:absolute;
   max-width: 500px;
-  bottom: 20%;
+  bottom: 2%;
   left: 33%;
 
   background: white;
+}
+
+.finish-button{
+  bottom: 80%;
+  top:10px;
+  left: 40%;
+  width:90px;  
+  height:40px;
+
+  
 }
 
 .example-full-width {
@@ -20,6 +30,14 @@
 ::ng-deep .mat-select-panel {
     background-color: rgb(97, 199, 151);
 }
+
+::ng-deep .mat-datepicker-toggle {
+    color: gray;
+}
+
+::ng-deep .mat-calendar{
+        background-color: rgb(97, 199, 151);
+    }
 
 ::ng-deep .mat-form-field {
     .mat-input-element {
@@ -40,7 +58,5 @@
     .mat-select-value{
         color:black;
     }
-    .locations-panel{
-        color:green;
-    }
+    
 }

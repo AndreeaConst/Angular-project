@@ -7,9 +7,13 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { FinishAppointmentPageComponent } from './finish-appointment-page/finish-appointment-page.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
-  declarations: [MainAppointmentPageComponent],
+  declarations: [MainAppointmentPageComponent, FinishAppointmentPageComponent],
   imports: [
     CommonModule,
     AppointmentPageRoutingModule,
@@ -17,7 +21,10 @@ import { MatSelectModule } from '@angular/material/select';
     FormsModule,
     ReactiveFormsModule,
     MatCardModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatButtonModule
   ]
 })
 export class AppointmentPageModule { }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AppointmentService } from 'src/app/appointment-service.service';
 
 export interface LocationDepartmentDoctor {
   value: string;
@@ -12,24 +14,12 @@ export interface LocationDepartmentDoctor {
 })
 
 export class MainAppointmentPageComponent implements OnInit {
+  constructor(private fb: FormBuilder,
+    private router: Router,
+    private appointmentService: AppointmentService) { }
 
-  constructor() { }
-
-  firstName = new FormControl('', [Validators.required]);
-  lastName = new FormControl('', [Validators.required]);
-  email = new FormControl('', [Validators.required]);
-
-  getErrorMessageFirstName() {
-    return this.firstName.hasError('required') ? 'You must enter a value' : true;
-  }
-
-  getErrorMessageLastName() {
-    return this.lastName.hasError('required') ? 'You must enter a value' : true;
-  }
-
-  getErrorMessageEmail() {
-    return this.email.hasError('required') ? 'You must enter a value' : true;
-  }
+  myForm: FormGroup = new FormGroup({});
+  selectedLocation = '';
 
   locations: LocationDepartmentDoctor[] = [
     { value: 'London, Addle Street, no. 3' },
@@ -40,8 +30,6 @@ export class MainAppointmentPageComponent implements OnInit {
     { value: 'Nottingham, Aberfort Avenue, no. 85' },
 
   ];
-  locationControl = new FormControl('', [Validators.required]);
-  selectedLocation = '';
 
   departments: LocationDepartmentDoctor[] = [
     { value: 'Cardiology' },
@@ -59,9 +47,59 @@ export class MainAppointmentPageComponent implements OnInit {
     { value: 'Rheumatology' },
     { value: 'Sexual Health' }
   ];
-  departmentControl = new FormControl('', [Validators.required]);
 
   ngOnInit(): void {
+    this.myForm = this.fb.group({
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      locationControl: ['', [Validators.required]],
+      departmentControl: ['', [Validators.required]],
+      matDatepicker: ['', [Validators.required]],
+
+      updateOn: 'blur'
+      })
+  }
+
+  onFinish(){
+    this.appointmentService.setDetails(this.email?.value, this.firstName?.value, this.lastName?.value, this.locationControl?.value, this.departmentControl?.value, this.matDatepicker?.value);
+    this.router.navigate(["/appointment/finish-appointment"]);
+  }
+
+  get firstName() {
+    return this.myForm.get("firstName");
+  }
+
+  get lastName() {
+    return this.myForm.get("lastName");
+  }
+
+  get email() {
+    return this.myForm.get("email");
+  }
+
+  get locationControl() {
+    return this.myForm.get("locationControl");
+  }
+
+  get departmentControl() {
+    return this.myForm.get("departmentControl");
+  }
+
+  get matDatepicker() {
+    return this.myForm.get("matDatepicker");
+  }
+
+  getErrorMessageFirstName() {
+    return this.myForm.get("firstName")?.hasError('required') ? 'You must enter a value' : true;
+  }
+
+  getErrorMessageLastName() {
+    return this.myForm.get("lastName")?.hasError('required') ? 'You must enter a value' : true;
+  }
+
+  getErrorMessageEmail() {
+    return this.myForm.get("email")?.hasError('required') ? 'You must enter a value' : true;
   }
 
 }
