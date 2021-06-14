@@ -69,7 +69,7 @@ export class FirebaseService {
     //localStorage.removeItem('user') --> this should be used for delete account
 
     //navigate to home if logged out
-    this.router.navigate([""])
+    this.router.navigate(["home-page"])
   }
 
   loginFunctionToGetUsername(userName: any){
