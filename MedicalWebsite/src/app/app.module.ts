@@ -32,6 +32,7 @@ import { EditElementComponent } from './modals/edit-element/edit-element.compone
 import { HomePageModule } from './home-page/home-page.module';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,13 +61,9 @@ import { HomePageModule } from './home-page/home-page.module';
     
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule,
     MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     MatCardModule,
@@ -76,7 +73,6 @@ import { HomePageModule } from './home-page/home-page.module';
     MatIconModule,
     MatInputModule,
     MatSnackBarModule,
-    MatTableModule,
     MatSortModule,
     MatDialogModule,
     HomePageModule
@@ -84,4 +80,5 @@ import { HomePageModule } from './home-page/home-page.module';
   providers: [FirebaseService, CookieService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+}

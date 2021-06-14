@@ -1,23 +1,24 @@
-.register-card{
+.appointment-card{
   position:absolute;
-  max-width: 610px;
-  height:380px;
+  max-width: 500px;
   top: 30%;
-  left: 27%;
-    
+  left: 33%;
+
   background: white;
+}
+
+.finish-button{
+  bottom: 80%;
+  top:10px;
+  left: 40%;
+  width:90px;  
+  height:40px;
+
+  
 }
 
 .example-full-width {
   width: 100%;
-}
-
-.register-button{
-  bottom: 80%;
-  top:20px;
-  left: 43%;
-  width:90px;  
-  height:40px;
 }
 
 ::ng-deep .mat-card{
@@ -30,8 +31,15 @@
     background-color: rgb(97, 199, 151);
 }
 
-::ng-deep .mat-form-field {
+::ng-deep .mat-datepicker-toggle {
+    color: gray;
+}
 
+::ng-deep .mat-calendar{
+        background-color: rgb(97, 199, 151);
+    }
+
+::ng-deep .mat-form-field {
     .mat-input-element {
         color: black;
     }
@@ -50,7 +58,5 @@
     .mat-select-value{
         color:black;
     }
-    .locations-panel{
-        color:green;
-    }
+    
 }

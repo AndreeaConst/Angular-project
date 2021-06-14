@@ -9,6 +9,10 @@ import { HomePageComponent } from './home-page/home-page.component';
 
 const routes: Routes = [
   {
+    path: 'appointment',
+    loadChildren: () => import('./appointment-page/appointment-page.module').then(mod => mod.AppointmentPageModule)
+  },
+  {
     path:'login',
     component: LoginPageComponent
   },

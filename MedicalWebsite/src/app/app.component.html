@@ -13,10 +13,7 @@
   <div class="spacer"></div>
 
   <a routerLink="/home-page" mat-button>Home</a>
-  <a mat-button>Services</a>
   <a routerLink="/appointment" mat-button>Schedule an appointment</a>
-  <a routerLink="/MyFavorites" mat-button>My Favorites</a>
-  <a mat-button>Contact</a>
 
   <div *ngIf="isLoggedout">
     <a routerLink="/login" mat-raised-button color="warn">Login</a>
@@ -24,6 +21,7 @@
   </div>
 
   <div *ngIf="!isLoggedout">
+    <a routerLink="/MyFavorites" mat-button>My Favorites</a>
     <button (click)="logoutService.logout()" mat-raised-button color="warn">Logout</button>
   </div>
   
