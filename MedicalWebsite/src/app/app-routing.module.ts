@@ -5,6 +5,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageSuccessfulComponent } from './register-page-successful/register-page-successful.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { MyFavoritesComponent } from './my-favorites/my-favorites.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path:'MyFavorites',
     component: MyFavoritesComponent
+  },
+  {
+    path: 'home-page',
+    component: HomePageComponent
   }
 ];
 

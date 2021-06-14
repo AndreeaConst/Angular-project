@@ -29,6 +29,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AddElementComponent } from './modals/add-element/add-element.component';
 import { EditElementComponent } from './modals/edit-element/edit-element.component';
+import { HomePageModule } from './home-page/home-page.module';
+
 
 
 @NgModule({
@@ -40,7 +42,7 @@ import { EditElementComponent } from './modals/edit-element/edit-element.compone
     LoginPageComponent,
     LoginPageSuccessfulComponent,
     RegisterPageComponent,
-    RegisterPageSuccessfulComponent
+    RegisterPageSuccessfulComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,7 +74,8 @@ import { EditElementComponent } from './modals/edit-element/edit-element.compone
     MatInputModule,
     MatSnackBarModule,
     MatSortModule,
-    MatDialogModule
+    MatDialogModule,
+    HomePageModule
   ],
   providers: [FirebaseService, CookieService],
   bootstrap: [AppComponent]
