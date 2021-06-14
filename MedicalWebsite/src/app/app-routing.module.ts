@@ -8,6 +8,10 @@ import { MyFavoritesComponent } from './my-favorites/my-favorites.component';
 
 const routes: Routes = [
   {
+    path: 'appointment',
+    loadChildren: () => import('./appointment-page/appointment-page.module').then(mod => mod.AppointmentPageModule)
+  },
+  {
     path:'login',
     component: LoginPageComponent
   },
@@ -26,7 +30,7 @@ const routes: Routes = [
   {
     path:'MyFavorites',
     component: MyFavoritesComponent
-  },
+  }
 ];
 
 @NgModule({

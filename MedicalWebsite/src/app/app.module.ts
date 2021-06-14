@@ -30,6 +30,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { AddElementComponent } from './modals/add-element/add-element.component';
 import { EditElementComponent } from './modals/edit-element/edit-element.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,4 +82,5 @@ import { EditElementComponent } from './modals/edit-element/edit-element.compone
   providers: [FirebaseService, CookieService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+}
